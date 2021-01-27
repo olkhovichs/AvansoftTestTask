@@ -8,4 +8,5 @@ public:
 	int choice;
 
 	int menuMain();
+	int backBegin();
 };

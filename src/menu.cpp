@@ -13,3 +13,12 @@ int Menu::menuMain() {
 	
 	return choice;
 }
+
+int Menu::backBegin() {
+	choice = 0;
+	std::cout << "\n 1. Вернуться к началу" << std::endl;
+	std::cout << "2. Выйти" << std::endl;
+	std::cin >> choice;
+
+	return choice;
+}
