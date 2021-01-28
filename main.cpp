@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <cstdlib>
 
 int main() {
 	// filling in the catalogue of cars (add to a separate method)
@@ -15,51 +16,47 @@ int main() {
 	double carSpeed = 0;
 	for (int i = 1; i <= 11; i++) {
 		color = carColors[rand() % carColors.size()];
-		carSpeed = rand() / 260; // от
+		carSpeed = 220 + (double)(rand()) / RAND_MAX * (340 - 220);
 		carsCatalog.push_back(Car(i, color, carSpeed));
 	}
-
-	// main menu
-	Menu* choice = new Menu;
+	
 	setlocale(LC_ALL, "Russian");
+	Menu* choice = new Menu;
 	do {
-		switch (choice->menuMain()) {
+		choice->menuMain();
+		switch (choice->choiceMenu) {
 		case 1:
 			system("cls");
-			std::cout << "Помощь";
-			break;
-		case 2:
 			do {
-				system("cls");
-				std::cout << "Cписок авто:" << std::endl;
-				//
-				for (int i = 0; i < carsCatalog.size() - 1; i++) {
-					//
-					std::cout << std::setw(5) << carsCatalog[i].id << carsCatalog[i].color << carsCatalog[i].speed << std::endl;
-				}
-				switch (choice->backBegin()) {
+				choice->backBegin();
+				switch (choice->choiceBack) {
 				case 1:
-					choice->menuMain();
 					break;
 				case 2:
 					exit(EXIT_SUCCESS);
 					break;
-				default:
-					std::cerr << "Вы ввели некорректное значение" << std::endl;
-					exit(EXIT_SUCCESS);
 				}
-			} while (choice->backBegin() != 1);
-		case 3:
-			system("cls");
-			std::cout << "Фильтр";
+			} while (choice->choiceBack != 1);
 			break;
-		case 4:
+		case 2:
 			system("cls");
-			std::cout << "Узнать авто владельца";
-			break;
-		case 5:
-			system("cls");
-			std::cout << "Приобрести автомобиль";
+			std::cout << "| ID |  Color  | Max speed |" << std::endl;
+			for (int i = 0; i < carsCatalog.size() - 1; i++) {
+				std::cout << "------------------------------" << std::endl;
+				std::cout << std::setw(3) << carsCatalog[i].id
+						<< std::setw(10) << carsCatalog[i].color
+						<< std::setw(10) << std::setprecision(4) << carsCatalog[i].maxSpeed << std::endl;
+			}
+			do {
+				choice->backBegin();
+				switch (choice->choiceBack) {
+				case 1:
+					break;
+				case 2:
+					exit(EXIT_SUCCESS);
+					break;
+				}
+			} while (choice->choiceBack != 1);
 			break;
 		case 6:
 			exit(EXIT_SUCCESS);
@@ -68,7 +65,7 @@ int main() {
 			std::cerr << "Вы ввели некорректное значение" << std::endl;
 			exit(EXIT_SUCCESS);
 		}
-	} while (choice->menuMain() != 6);
+	} while (choice->choiceMenu != 6);
 
 	return 0;
 }
