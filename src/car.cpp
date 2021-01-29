@@ -16,14 +16,12 @@ Car::Car(int id, double price, std::string color, double speed) {
 
 // filling in the catalogue of cars
 void Car::setCatalog() {
-	//int carId = 0;
 	double carPrice = 0;
 	std::string color;
 	double carSpeed = 0;
 
 	srand(time(nullptr));
 	for (int i = 1; i <= 11; i++) {
-		//carId = 1 + (rand()) % 9;
 		carPrice = 1.10 + (double)(rand()) / RAND_MAX * (6.49 - 1.10);
 		color = carColors[rand() % carColors.size()];
 		carSpeed = 220 + (double)(rand()) / RAND_MAX * (340 - 220);
@@ -42,4 +40,8 @@ void Car::printCatalog(double filterPrice, double filterSpeed) {
 				<< std::setw(10) << std::setprecision(4) << catalog[i].speed << std::endl;
 		}
 	}
+}
+
+void Car::buyCar(int buyId) {
+	catalog.erase(catalog.begin() + buyId - 1);
 }

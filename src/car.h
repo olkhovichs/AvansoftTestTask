@@ -21,4 +21,6 @@ public:
 	Car(int id, double price, std::string color, double speed);
 	void setCatalog();
 	void printCatalog(double filterPrice = 6.50, double filterSpeed = 0);
+	void printOwnCars(std::string name);
+	void buyCar(int buyId);
 };

@@ -1,4 +1,5 @@
 #include "src/car.h"
+#include "src/client.h"
 #include "src/menu.h"
 
 #include <iostream>
@@ -6,12 +7,17 @@
 #include <vector>
 #include <string>
 
+#include <typeinfo>
+
 int main() {
 
 	Car cars;
 	cars.setCatalog();
 	double maxPrice;
 	double minSpeed;
+
+	Client client;
+	int clientId;
 
 	setlocale(LC_ALL, "Russian");
 	Menu* choice = new Menu;
@@ -60,7 +66,7 @@ int main() {
 					break;
 				case 2:
 					system("cls");
-					std::cout << "Введите минимальную максимальную скорость: ";
+					std::cout << "Максимальная скорость автомобиля от: ";
 					std::cin >> minSpeed;
 					std::cout << std::endl;
 					cars.printCatalog(6.50, minSpeed);
@@ -69,6 +75,34 @@ int main() {
 					break;
 				}
 			} while (choice->choiceFilter != 3);
+			break;
+		case 4:
+			system("cls");
+			std::cout << "Введите свое имя: ";
+			std::cin >> client.name;
+			std::cout << std::endl;
+
+		case 5:
+			system("cls");
+			std::cout << "Введите свое имя: ";
+			std::cin >> client.name; 
+			std::cout << std::endl;
+			cars.printCatalog();
+			std::cout << "\nВведите ID автомобиля, который хотите приобрести: ";
+			std::cin >> client.id;
+			system("cls");
+			std::cout << "\nПоздравляем " << client.name << "! . Вы приобрели автомобиль под номером " << client.id;
+			cars.buyCar(client.id);
+			do {
+				choice->backBegin();
+				switch (choice->choiceBack) {
+				case 1:
+					break;
+				case 2:
+					exit(EXIT_SUCCESS);
+					break;
+				}
+			} while (choice->choiceBack != 1);
 			break;
 		case 6:
 			exit(EXIT_SUCCESS);

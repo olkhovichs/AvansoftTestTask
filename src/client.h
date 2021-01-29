@@ -1,9 +1,13 @@
 #pragma once
 
-#include "car.h"
+#include <iostream>
 
-class Client : public Car {
+class Client {
 public:
+
+	std::string name;
+	int id;
+
 	Client();
-	Client(int id);
+	Client(std::string name, int id);
 };
