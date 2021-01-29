@@ -5,8 +5,11 @@
 
 class Menu {
 public:
-	int choice;
+	int choiceMenu;
+	int choiceBack;
+	int choiceFilter;
 
-	int menuMain();
-	int backBegin();
+	void menuMain();
+	void backBegin();
+	void filterMenu();
 };

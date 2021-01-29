@@ -5,23 +5,13 @@
 #include <iomanip>
 #include <vector>
 #include <string>
-#include <ctime>
 
 int main() {
-	// filling in the catalogue of cars (add to a separate method)
-	/*std::vector<Car> carsCatalog;
-	std::vector<std::string> carColors{ "white", "black", "red", "blue", "green", "yellow", "purple", "gray"};
-	std::string color;
-	double carSpeed = 0;
-	srand(time(nullptr));
-	for (int i = 1; i <= 11; i++) {
-		color = carColors[rand() % carColors.size()];
-		carSpeed = 220 + (double)(rand()) / RAND_MAX * (340 - 220);
-		carsCatalog.push_back(Car(i, color, carSpeed));
-	}*/
-	
+
 	Car cars;
 	cars.setCatalog();
+	double maxPrice;
+	double minSpeed;
 
 	setlocale(LC_ALL, "Russian");
 	Menu* choice = new Menu;
@@ -43,13 +33,7 @@ int main() {
 			break;
 		case 2:
 			system("cls");
-			std::cout << "| ID |  Color  | Max speed |" << std::endl;
-			for (int i = 0; i < cars.catalog.size() - 1; i++) {
-				std::cout << "------------------------------" << std::endl;
-				std::cout << std::setw(3) << cars.catalog[i].id
-						<< std::setw(10) << cars.catalog[i].color
-						<< std::setw(10) << std::setprecision(4) << cars.catalog[i].maxSpeed << std::endl;
-			}
+			cars.printCatalog();
 			do {
 				choice->backBegin();
 				switch (choice->choiceBack) {
@@ -68,19 +52,23 @@ int main() {
 				choice->filterMenu();
 				switch (choice->choiceFilter) {
 				case 1:
-					//std::cout << "1";
-
+					system("cls");
+					std::cout << "¬ведите максимальную цену: ";
+					std::cin >> maxPrice;
+					std::cout << std::endl;
+					cars.printCatalog(maxPrice);
 					break;
 				case 2:
-					std::cout << "2";
+					system("cls");
+					std::cout << "¬ведите минимальную максимальную скорость: ";
+					std::cin >> minSpeed;
+					std::cout << std::endl;
+					cars.printCatalog(6.50, minSpeed);
 					break;
 				case 3:
-					std::cout << "3";
-					break;
-				case 4:
 					break;
 				}
-			} while (choice->choiceFilter != 4);
+			} while (choice->choiceFilter != 3);
 			break;
 		case 6:
 			exit(EXIT_SUCCESS);

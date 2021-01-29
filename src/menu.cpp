@@ -1,7 +1,7 @@
 #include "menu.h"
 
-int Menu::menuMain() {
-	choice = 0;
+void Menu::menuMain() {
+	choiceMenu = 0;
 	system("cls");
 	std::cout << "1. Помощь" << std::endl;
 	std::cout << "2. Отобразить список авто" << std::endl;
@@ -9,16 +9,22 @@ int Menu::menuMain() {
 	std::cout << "4. Какой автомобиль у владельца" << std::endl;
 	std::cout << "5. Приобрести автомобиль по ID" << std::endl;
 	std::cout << "6. Выйти" << std::endl;
-	std::cin >> choice;
+	std::cin >> choiceMenu;
 	
-	return choice;
 }
 
-int Menu::backBegin() {
-	choice = 0;
-	std::cout << "\n 1. Вернуться к началу" << std::endl;
+void Menu::backBegin() {
+	choiceBack = 0;
+	std::cout << "\n1. Вернуться к началу" << std::endl;
 	std::cout << "2. Выйти" << std::endl;
-	std::cin >> choice;
+	std::cin >> choiceBack;
 
-	return choice;
+}
+
+void Menu::filterMenu() {
+	choiceFilter = 0;
+	std::cout << "\n1. Цене" << std::endl;
+	std::cout << "2. Максимальной скорости" << std::endl;
+	std::cout << "3. Вернуться к началу" << std::endl;
+	std::cin >> choiceFilter;
 }
