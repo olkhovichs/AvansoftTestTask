@@ -43,5 +43,6 @@ void Car::printCatalog(double filterPrice, double filterSpeed) {
 }
 
 void Car::buyCar(int buyId) {
-	catalog.erase(catalog.begin() + buyId - 1);
+	auto car = std::find_if(std::begin(catalog), std::end(catalog), [buyId](Car c) { return c.id == buyId; });
+	catalog.erase(car);
 }

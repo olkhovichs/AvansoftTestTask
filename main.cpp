@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <vector>
 #include <string>
+#include <map>
 
 #include <typeinfo>
 
@@ -16,8 +17,10 @@ int main() {
 	double maxPrice;
 	double minSpeed;
 
+	//std::map<Car, int> cat;
+
 	Client client;
-	int clientId;
+	std::vector<Client> clientBase;
 
 	setlocale(LC_ALL, "Russian");
 	Menu* choice = new Menu;
@@ -81,18 +84,19 @@ int main() {
 			std::cout << "Введите свое имя: ";
 			std::cin >> client.name;
 			std::cout << std::endl;
-
+			// 
 		case 5:
 			system("cls");
 			std::cout << "Введите свое имя: ";
 			std::cin >> client.name; 
+			clientBase.push_back(client);
 			std::cout << std::endl;
 			cars.printCatalog();
 			std::cout << "\nВведите ID автомобиля, который хотите приобрести: ";
-			std::cin >> client.id;
+			std::cin >> cars.id;
 			system("cls");
-			std::cout << "\nПоздравляем " << client.name << "! . Вы приобрели автомобиль под номером " << client.id;
-			cars.buyCar(client.id);
+			std::cout << "Поздравляем, " << client.name << "! Вы приобрели автомобиль под номером " << cars.id << ".";
+			cars.buyCar(cars.id);
 			do {
 				choice->backBegin();
 				switch (choice->choiceBack) {
