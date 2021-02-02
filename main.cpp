@@ -107,9 +107,20 @@ int main() {
 			std::cin >> cars.id;
 			system("cls");
 			std::cout << "Поздравляем, " << client.name << "! Вы приобрели автомобиль под номером " << cars.id << ".";
-			/*auto carBought = cars.buyCar(cars.id);
-			client.garage.push_back(carBought);*/
+
+			auto carBought = client.b(catalog, cars.id);
+			client.garage.push_back(carBought);
+			for (int i = 0; i < client.garage.size(); i++) {
+				std::cout << "-----------------------------------" << std::endl;
+				std::cout << std::setw(3) << client.garage[i].id
+					<< std::setw(8) << std::setprecision(3) << client.garage[i].price << " mln"
+					<< std::setw(10) << client.garage[i].color
+					<< std::setw(10) << std::setprecision(4) << client.garage[i].speed << std::endl;
+			}
 			cars.buyCar(catalog, cars.id);
+
+			
+		
 			do {
 				choice->backBegin();
 				switch (choice->choiceBack) {

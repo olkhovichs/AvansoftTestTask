@@ -1,13 +1,16 @@
 #pragma once
+#include "car.h"
 
 #include <iostream>
 
-class Client {
+class Client: public Car {
 public:
 
 	std::string name;
-	int id;
+	std::vector<Car> garage;
 
 	Client();
-	Client(std::string name, int id);
+	Client(std::string name, std::vector<Car> garage);
+
+	Car b(std::vector<Car>& catalog, int buyId);
 };
