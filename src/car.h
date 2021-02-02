@@ -13,14 +13,13 @@ public:
 	std::string color;
 	double speed;
 
-	std::vector<Car> catalog;
+	//std::vector<Car> catalog;
 	std::vector<std::string> carColors{ "white", "black", "red", "blue", "green", "yellow", "purple", "gray" };
 	
 
 	Car();
 	Car(int id, double price, std::string color, double speed);
-	void setCatalog();
-	void printCatalog(double filterPrice = 6.50, double filterSpeed = 0);
-	//void printOwnCars(std::string name);
-	void buyCar(int buyId);
+	std::vector<Car> setCatalog();
+	void printCatalog(std::vector<Car> catalog, double filterPrice = 6.50, double filterSpeed = 0);
+	Car buyCar(std::vector<Car> catalog, int buyId);
 };

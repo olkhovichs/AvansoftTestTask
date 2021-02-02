@@ -15,10 +15,11 @@ Car::Car(int id, double price, std::string color, double speed) {
 }
 
 // filling in the catalogue of cars
-void Car::setCatalog() {
+std::vector<Car> Car::setCatalog() {
 	double carPrice = 0;
 	std::string color;
 	double carSpeed = 0;
+	std::vector<Car> catalog;
 
 	srand(time(nullptr));
 	for (int i = 1; i <= 11; i++) {
@@ -27,9 +28,11 @@ void Car::setCatalog() {
 		carSpeed = 220 + (double)(rand()) / RAND_MAX * (340 - 220);
 		catalog.push_back(Car(i, carPrice, color, carSpeed));
 	}
+
+	return catalog;
 }
 
-void Car::printCatalog(double filterPrice, double filterSpeed) {
+void Car::printCatalog(std::vector<Car> catalog, double filterPrice, double filterSpeed) {
 	std::cout << "| ID |  Price  |  Color  | Max speed |" << std::endl;
 	for (int i = 0; i < catalog.size() - 1; i++) {
 		if (catalog[i].price <= filterPrice && catalog[i].speed >= filterSpeed) {
@@ -42,7 +45,8 @@ void Car::printCatalog(double filterPrice, double filterSpeed) {
 	}
 }
 
-void Car::buyCar(int buyId) {
+Car Car::buyCar(std::vector<Car> catalog, int buyId) {
 	auto car = std::find_if(std::begin(catalog), std::end(catalog), [buyId](Car c) { return c.id == buyId; });
 	catalog.erase(car);
+	return *car;
 }
