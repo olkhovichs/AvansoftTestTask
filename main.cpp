@@ -11,10 +11,8 @@ int main() {
 
 	Car actionCatalog;
 	Client actionBase;
-	
 	std::vector<Car> catalog;
 	std::vector<Client> clientBase;
-	
 	catalog = actionCatalog.setCatalog();
 	clientBase.resize(1);
 
@@ -55,20 +53,20 @@ int main() {
 			double maxPrice;
 			double minSpeed;
 			system("cls");
-			std::cout << "Îňôčëüňđîâŕňü ńďčńîę ŕâňîěîáčëĺé ďî:" << std::endl;
+			std::cout << "Отфильтровать список автомобилей по:" << std::endl;
 			do {
 				choice.filterMenu();
 				switch (choice.choiceFilter) {
 				case 1:
 					system("cls");
-					std::cout << "Ââĺäčňĺ ěŕęńčěŕëüíóţ öĺíó: ";
+					std::cout << "Введите максимальную цену: ";
 					std::cin >> maxPrice;
 					std::cout << std::endl;
 					actionCatalog.printCatalog(catalog, maxPrice);
 					break;
 				case 2:
 					system("cls");
-					std::cout << "Ěŕęńčěŕëüíŕ˙ ńęîđîńňü ŕâňîěîáčë˙ îň: ";
+					std::cout << "Максимальная скорость автомобиля от: ";
 					std::cin >> minSpeed;
 					std::cout << std::endl;
 					actionCatalog.printCatalog(catalog, 6.50, minSpeed);
@@ -82,7 +80,7 @@ int main() {
 		{
 			std::string name;
 			system("cls");
-			std::cout << "Ââĺäčňĺ ńâîĺ čě˙: ";
+			std::cout << "Введите свое имя: ";
 			std::cin >> name;
 			std::cout << std::endl;
 			
@@ -105,14 +103,14 @@ int main() {
 			Car car;
 			std::string name;
 			system("cls");
-			std::cout << "Ââĺäčňĺ ńâîĺ čě˙: ";
+			std::cout << "Введите свое имя: ";
 			std::cin >> name;
 			std::cout << std::endl;
 			actionCatalog.printCatalog(catalog);
-			std::cout << "\nÂâĺäčňĺ ID ŕâňîěîáčë˙, ęîňîđűé őîňčňĺ ďđčîáđĺńňč: ";
+			std::cout << "\nВведите ID автомобиля, который хотите приобрести: ";
 			std::cin >> car.id;
 			system("cls");
-			std::cout << "Ďîçäđŕâë˙ĺě, " << name << "! Âű ďđčîáđĺëč ŕâňîěîáčëü ďîä íîěĺđîě " << car.id << ".";
+			std::cout << "Поздравляем, " << name << "! Вы приобрели автомобиль под номером " << car.id << ".";
 
 			actionBase.addGarage(catalog, clientBase, car.id, name);
 
@@ -132,7 +130,7 @@ int main() {
 			exit(EXIT_SUCCESS);
 			break;
 		default:
-			std::cerr << "Âű ââĺëč íĺęîđđĺęňíîĺ çíŕ÷ĺíčĺ" << std::endl;
+			std::cerr << "Вы ввели некорректное значение" << std::endl;
 			exit(EXIT_SUCCESS);
 		}
 	} while (choice.choiceMenu != 6);
