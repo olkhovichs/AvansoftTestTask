@@ -11,8 +11,10 @@ int main() {
 
 	Car actionCatalog;
 	Client actionBase;
+	
 	std::vector<Car> catalog;
 	std::vector<Client> clientBase;
+	
 	catalog = actionCatalog.setCatalog();
 	clientBase.resize(1);
 
@@ -53,20 +55,20 @@ int main() {
 			double maxPrice;
 			double minSpeed;
 			system("cls");
-			std::cout << "Îòôèëüòðîâàòü ñïèñîê àâòîìîáèëåé ïî:" << std::endl;
+			std::cout << "ÃŽÅˆÃ´ÄÃ«Ã¼ÅˆÄ‘Ã®Ã¢Å•ÅˆÃ¼ Å„ÄÄÅ„Ã®Ä™ Å•Ã¢ÅˆÃ®Ä›Ã®Ã¡ÄÃ«ÄºÃ© ÄÃ®:" << std::endl;
 			do {
 				choice.filterMenu();
 				switch (choice.choiceFilter) {
 				case 1:
 					system("cls");
-					std::cout << "Ââåäèòå ìàêñèìàëüíóþ öåíó: ";
+					std::cout << "Ã‚Ã¢ÄºÃ¤ÄÅˆÄº Ä›Å•Ä™Å„ÄÄ›Å•Ã«Ã¼Ã­Ã³Å£ Ã¶ÄºÃ­Ã³: ";
 					std::cin >> maxPrice;
 					std::cout << std::endl;
 					actionCatalog.printCatalog(catalog, maxPrice);
 					break;
 				case 2:
 					system("cls");
-					std::cout << "Ìàêñèìàëüíàÿ ñêîðîñòü àâòîìîáèëÿ îò: ";
+					std::cout << "ÄšÅ•Ä™Å„ÄÄ›Å•Ã«Ã¼Ã­Å•Ë™ Å„Ä™Ã®Ä‘Ã®Å„ÅˆÃ¼ Å•Ã¢ÅˆÃ®Ä›Ã®Ã¡ÄÃ«Ë™ Ã®Åˆ: ";
 					std::cin >> minSpeed;
 					std::cout << std::endl;
 					actionCatalog.printCatalog(catalog, 6.50, minSpeed);
@@ -80,7 +82,7 @@ int main() {
 		{
 			std::string name;
 			system("cls");
-			std::cout << "Ââåäèòå ñâîå èìÿ: ";
+			std::cout << "Ã‚Ã¢ÄºÃ¤ÄÅˆÄº Å„Ã¢Ã®Äº ÄÄ›Ë™: ";
 			std::cin >> name;
 			std::cout << std::endl;
 			
@@ -103,14 +105,14 @@ int main() {
 			Car car;
 			std::string name;
 			system("cls");
-			std::cout << "Ââåäèòå ñâîå èìÿ: ";
+			std::cout << "Ã‚Ã¢ÄºÃ¤ÄÅˆÄº Å„Ã¢Ã®Äº ÄÄ›Ë™: ";
 			std::cin >> name;
 			std::cout << std::endl;
 			actionCatalog.printCatalog(catalog);
-			std::cout << "\nÂâåäèòå ID àâòîìîáèëÿ, êîòîðûé õîòèòå ïðèîáðåñòè: ";
+			std::cout << "\nÃ‚Ã¢ÄºÃ¤ÄÅˆÄº ID Å•Ã¢ÅˆÃ®Ä›Ã®Ã¡ÄÃ«Ë™, Ä™Ã®ÅˆÃ®Ä‘Å±Ã© Å‘Ã®ÅˆÄÅˆÄº ÄÄ‘ÄÃ®Ã¡Ä‘ÄºÅ„ÅˆÄ: ";
 			std::cin >> car.id;
 			system("cls");
-			std::cout << "Ïîçäðàâëÿåì, " << name << "! Âû ïðèîáðåëè àâòîìîáèëü ïîä íîìåðîì " << car.id << ".";
+			std::cout << "ÄŽÃ®Ã§Ã¤Ä‘Å•Ã¢Ã«Ë™ÄºÄ›, " << name << "! Ã‚Å± ÄÄ‘ÄÃ®Ã¡Ä‘ÄºÃ«Ä Å•Ã¢ÅˆÃ®Ä›Ã®Ã¡ÄÃ«Ã¼ ÄÃ®Ã¤ Ã­Ã®Ä›ÄºÄ‘Ã®Ä› " << car.id << ".";
 
 			actionBase.addGarage(catalog, clientBase, car.id, name);
 
@@ -130,7 +132,7 @@ int main() {
 			exit(EXIT_SUCCESS);
 			break;
 		default:
-			std::cerr << "Âû ââåëè íåêîððåêòíîå çíà÷åíèå" << std::endl;
+			std::cerr << "Ã‚Å± Ã¢Ã¢ÄºÃ«Ä Ã­ÄºÄ™Ã®Ä‘Ä‘ÄºÄ™ÅˆÃ­Ã®Äº Ã§Ã­Å•Ã·ÄºÃ­ÄÄº" << std::endl;
 			exit(EXIT_SUCCESS);
 		}
 	} while (choice.choiceMenu != 6);
