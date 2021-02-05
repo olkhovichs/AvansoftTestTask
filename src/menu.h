@@ -12,4 +12,5 @@ public:
 	void menuMain();
 	void backBegin();
 	void filterMenu();
+	void help();
 };

@@ -44,9 +44,3 @@ void Car::printCatalog(std::vector<Car> catalog, double filterPrice, double filt
 		}
 	}
 }
-
-Car Car::buyCar(std::vector<Car> catalog, int buyId) {
-	auto car = std::find_if(std::begin(catalog), std::end(catalog), [buyId](Car c) { return c.id == buyId; });
-	catalog.erase(car);
-	return *car;
-}
