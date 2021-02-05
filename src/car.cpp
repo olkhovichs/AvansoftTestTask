@@ -38,7 +38,7 @@ void Car::printCatalog(std::vector<Car> catalog, double filterPrice, double filt
 		if (catalog[i].price <= filterPrice && catalog[i].speed >= filterSpeed) {
 			std::cout << "-----------------------------------" << std::endl;
 			std::cout << std::setw(3) << catalog[i].id
-				<< std::setw(8) << std::setprecision(3) << catalog[i].price << " млн"
+				<< std::setw(8) << std::setprecision(3) << catalog[i].price << " РјР»РЅ"
 				<< std::setw(10) << catalog[i].color
 				<< std::setw(10) << std::setprecision(4) << catalog[i].speed << std::endl;
 		}
